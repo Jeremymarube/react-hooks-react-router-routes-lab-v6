@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+// src/pages/Movie.jsx
 import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import NavBar from "../components/NavBar";
 
 function Movie() {
-  const { id } = useParams();
+  const { id } = useParams(); // get the movie id from the route
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
@@ -21,15 +22,15 @@ function Movie() {
       </header>
       <main>
         <h1>{movie.title}</h1>
-        {/* Render time without "minutes" so test looking for just the number passes */}
         <p>{movie.time}</p>
-        {movie.genres.map((genre, index) => (
-          <span key={index}>{genre}</span>
-        ))}
+        <div>
+          {movie.genres.map((genre, index) => (
+            <span key={index}>{genre}</span>
+          ))}
+        </div>
       </main>
     </>
   );
 }
 
 export default Movie;
-
